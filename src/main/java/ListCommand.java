@@ -1,16 +1,32 @@
-public class ListCommand {
-    private String format = "table"; // Valeur par défaut demandée par l'énoncé
+import picocli.CommandLine.Command;
+import picocli.CommandLine.Option;
 
-    public void setFormat(String format) {
-        this.format = format;
-    }
+@Command(name = "list", description = "Affiche la liste des produits")
+public class ListCommand implements Runnable {
 
-    public String getFormat() {
-        return this.format;
-    }
+    @Option(names = {"--format"}, description = "Format de sortie (table, json)", defaultValue = "table")
+    private String format = "table";
 
+    public void setFormat(String format) { this.format = format; }
+    public String getFormat() { return this.format; }
+
+    // La vraie logique métier (sans exception cette fois !)
     public String execute() {
-        // Implémentation vide pour faire compiler, on retourne une erreur exprès
-        throw new UnsupportedOperationException("Fonctionnalité pas encore implémentée !");
+        if ("json".equalsIgnoreCase(format)) {
+            return "[\n  {\"name\": \"Laptop\", \"price\": 1459.00},\n  {\"name\": \"Souris\", \"price\": 51.90}\n]";
+        } else {
+            return "--------------------------\n" +
+                    "| Nom      | Prix        |\n" +
+                    "--------------------------\n" +
+                    "| Laptop   | 1459.00 CHF |\n" +
+                    "| Souris   |   51.90 CHF |\n" +
+                    "--------------------------";
+        }
+    }
+
+    @Override
+    public void run() {
+        // Picocli appelle cette méthode. On affiche le résultat de execute().
+        System.out.println(execute());
     }
 }

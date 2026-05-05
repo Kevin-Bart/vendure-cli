@@ -27,11 +27,22 @@ class CliTests {
         assertEquals("json", listCmd.getFormat(), "La commande doit accepter le format 'json'.");
     }
 
-    // Test 4 : Vérifier l'exécution (Spécification : afficher les produits avec nom et prix)
+//    // Old Test 4 : Vérifier l'exécution (Spécification : afficher les produits avec nom et prix)
+//    @Test
+//    void testListCommandExecutionThrowsExceptionInitially() {
+//        ListCommand listCmd = new ListCommand();
+//        Exception exception = assertThrows(UnsupportedOperationException.class, listCmd::execute);
+//        assertEquals("Fonctionnalité pas encore implémentée !", exception.getMessage());
+//    }
+
+    // Test 4 : Vérifier l'exécution (Spécification : afficher les produits statiques)
     @Test
-    void testListCommandExecutionThrowsExceptionInitially() {
+    void testListCommandExecutionReturnsStaticList() {
         ListCommand listCmd = new ListCommand();
-        Exception exception = assertThrows(UnsupportedOperationException.class, listCmd::execute);
-        assertEquals("Fonctionnalité pas encore implémentée !", exception.getMessage());
+        String result = listCmd.execute();
+
+        // On vérifie que la réponse statique contient bien nos produits
+        assertTrue(result.contains("Laptop"), "Le résultat doit contenir 'Laptop'");
+        assertTrue(result.contains("1459"), "Le résultat doit contenir le prix");
     }
 }
