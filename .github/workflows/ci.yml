@@ -6,6 +6,14 @@ on:
   pull_request:
     branches: [ "main", "master" ]
 
+# 1. Autorise GitHub Actions à modifier le code si le formatage n'est pas bon
+permissions:
+  contents: write
+
+# 2. Fait disparaître le warning Node.js 20
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -22,7 +30,7 @@ jobs:
       - name: Check code formatting (Google Java Format)
         uses: axel-op/googlejavaformat-action@v3
         with:
-          args: "--replace" # Mettre "--dry-run" si on veut juste vérifier sans modifier
+          args: "--replace"
 
       - name: Build and Test with Maven
         run: mvn -B test
