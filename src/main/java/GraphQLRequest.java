@@ -1,15 +1,15 @@
 public class GraphQLRequest {
-    private String query;
+  private String query;
 
-    public GraphQLRequest(String query) {
-        this.query = query;
-    }
+  public GraphQLRequest(String query) {
+    this.query = query;
+  }
 
-    public String getQuery() {
-        return query;
-    }
+  public String getQuery() {
+    return query;
+  }
 
-    public void setQuery(String query) {
-        this.query = query;
-    }
+  public void setQuery(String query) {
+    this.query = query;
+  }
 }
