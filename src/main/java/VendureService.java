@@ -21,7 +21,9 @@ public class VendureService {
   // Méthode pour récupérer la liste des produits (Requête GraphQL)
   public List<Product> getProducts() throws Exception {
     // 1. Définition de la requête GraphQL selon l'énoncé
-    String query = "query { products { items { name } } }"; // Simplifiée pour l'exemple
+    //    String query = "query { products { items { name } } }"; // Simplifiée pour l'exemple
+    // On demande maintenant le nom ET le prix de la variante
+    String query = "query { products { items { name variants { price } } } }";
     GraphQLRequest requestObj = new GraphQLRequest(query);
 
     // 2. Transformation de l'objet en texte JSON

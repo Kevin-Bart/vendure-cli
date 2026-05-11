@@ -37,8 +37,8 @@ class GraphQLMappingTest {
           "data": {
             "products": {
               "items": [
-                { "name": "Laptop", "price": 129900 },
-                { "name": "Souris", "price": 2550 }
+                { "name": "Laptop", "variants": [{ "price": 129900 }] },
+                { "name": "Souris", "variants": [{ "price": 2550 }] }
               ]
             }
           }

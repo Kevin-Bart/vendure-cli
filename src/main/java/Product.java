@@ -1,14 +1,10 @@
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.List;
 
-// Cette annotation dit à Jackson de ne pas planter s'il y a des champs dans le JSON qu'on n'a pas
-// mis dans cette classe
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
   private String name;
-
-  // Vendure renvoie les prix sous forme d'entiers (centimes). On utilisera des variables basiques
-  // pour simplifier.
-  private int price;
+  private List<Variant> variants;
 
   public String getName() {
     return name;
@@ -18,11 +14,33 @@ public class Product {
     this.name = name;
   }
 
-  public int getPrice() {
-    return price;
+  public List<Variant> getVariants() {
+    return variants;
   }
 
-  public void setPrice(int price) {
-    this.price = price;
+  public void setVariants(List<Variant> variants) {
+    this.variants = variants;
+  }
+
+  // Méthode pratique pour récupérer le prix de la première variante
+  public int getPrice() {
+    if (variants != null && !variants.isEmpty()) {
+      return variants.get(0).getPrice();
+    }
+    return 0;
+  }
+
+  // Sous-classe pour lire le tableau des variantes de Vendure
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static class Variant {
+    private int price;
+
+    public int getPrice() {
+      return price;
+    }
+
+    public void setPrice(int price) {
+      this.price = price;
+    }
   }
 }
