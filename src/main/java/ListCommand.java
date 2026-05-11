@@ -1,9 +1,8 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.List;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.ParentCommand;
-
-import java.util.List;
 
 @Command(name = "list", description = "Affiche la vraie liste des produits depuis Vendure")
 public class ListCommand implements Runnable {
