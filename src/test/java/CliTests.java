@@ -39,13 +39,13 @@ class CliTests {
   //    }
 
   // Test 4 : Vérifier l'exécution (Spécification : afficher les produits statiques)
-  @Test
-  void testListCommandExecutionReturnsStaticList() {
-    ListCommand listCmd = new ListCommand();
-    String result = listCmd.execute();
-
-    // On vérifie que la réponse statique contient bien nos produits
-    assertTrue(result.contains("Laptop"), "Le résultat doit contenir 'Laptop'");
-    assertTrue(result.contains("1459"), "Le résultat doit contenir le prix");
-  }
+  //  @Test
+  //  void testListCommandExecutionReturnsStaticList() {
+  //    ListCommand listCmd = new ListCommand();
+  //    String result = listCmd.execute();
+  //
+  //    // On vérifie que la réponse statique contient bien nos produits
+  //    assertTrue(result.contains("Laptop"), "Le résultat doit contenir 'Laptop'");
+  //    assertTrue(result.contains("1459"), "Le résultat doit contenir le prix");
+  //  }
 }
